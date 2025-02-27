@@ -4,12 +4,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const taskList = document.querySelector(".task-list");
     const currentTime = document.querySelector(".current-time");
 
-    // Dugmad za promenu tema
+    // Buttons for theme changing
     const defaultTheme = document.querySelector(".theme-default");
     const lightTheme = document.querySelector(".theme-light");
     const darkTheme = document.querySelector(".theme-dark");
 
-    // Učitavanje prethodne teme
+    // Loading previous theme
     const savedTheme = localStorage.getItem("theme") || "default";
     document.body.classList.add(savedTheme);
 
@@ -36,16 +36,16 @@ document.addEventListener("DOMContentLoaded", () => {
     function addTask() {
         if (!taskInput.value.trim()) return;
 
-        // Glavni kontejner za task stavku i dugmad
+        // Main container for task item and buttons
         const taskContainer = document.createElement("div");
         taskContainer.classList.add("task-container");
 
-        // Task stavka
+        // Task item
         const li = document.createElement("li");
         li.classList.add("task-item");
         li.textContent = taskInput.value;
 
-        // Dugmad ✔ i 🗑 (izvan task stavke)
+        // Buttons ✔ and 🗑 (out of task item)
         const taskButtons = document.createElement("div");
         taskButtons.classList.add("task-buttons");
 
@@ -63,18 +63,18 @@ document.addEventListener("DOMContentLoaded", () => {
             taskContainer.remove();
         });
 
-        // Dodavanje dugmadi u kontejner za dugmad
+        // Adding buttons to container for button
         taskButtons.appendChild(checkBtn);
         taskButtons.appendChild(deleteBtn);
 
-        // Dodavanje task stavke i dugmadi u glavni kontejner
+        // Adding task item and buttons into main container
         taskContainer.appendChild(li);
         taskContainer.appendChild(taskButtons);
 
-        // Dodavanje kontejnera u listu
+        // Adding container into list
         taskList.appendChild(taskContainer);
 
-        // Reset input polja
+        // Reset input field
         taskInput.value = "";
     }
 });
